@@ -1,5 +1,7 @@
+import NewProductHeader from '../components/newProduct/NewProductHeader';
+
 const NewProduct = () => {
-  return <h2>New product form</h2>;
+  return <NewProductHeader />;
 };
 
 export default NewProduct;
