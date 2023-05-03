@@ -41,7 +41,11 @@ const Header = () => {
       <h2 className={styles.title}>Product List</h2>
       <nav>
         {!isMenuOpen && isMobileScreen && (
-          <MdMenu size="2rem" onClick={() => setIsMenuOpen(true)} />
+          <MdMenu
+            size="2rem"
+            onClick={() => setIsMenuOpen(true)}
+            className={styles.menuButton}
+          />
         )}
         {isMenuOpen && (
           <>

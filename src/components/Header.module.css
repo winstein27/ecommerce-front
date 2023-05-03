@@ -13,6 +13,10 @@
   margin: 0;
 }
 
+.menuButton {
+  vertical-align: middle;
+}
+
 .navbar {
   list-style-type: none;
   padding: 0;
