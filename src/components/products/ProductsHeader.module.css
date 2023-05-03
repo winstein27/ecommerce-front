@@ -1,0 +1,20 @@
+.menuItem {
+  display: block;
+  margin: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 800px) {
+  .navbar {
+    display: inline-block;
+  }
+
+  .menuItem {
+    display: inline-block;
+    margin-right: 0;
+  }
+}

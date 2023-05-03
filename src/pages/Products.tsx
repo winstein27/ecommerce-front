@@ -1,7 +1,7 @@
-import Header from '../components/Header';
+import ProductsHeader from '../components/products/ProductsHeader';
 
 const Products = () => {
-  return <Header />;
+  return <ProductsHeader />;
 };
 
 export default Products;

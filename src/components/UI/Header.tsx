@@ -1,28 +1,19 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { MdMenu, MdClose } from 'react-icons/md';
 
-import useScreen from '../hooks/useScreen';
+import useScreen from '../../hooks/useScreen';
 
-import Button from './UI/Button';
-import Backdrop from './UI/Backdrop';
+import Backdrop from './Backdrop';
 
 import styles from './Header.module.css';
 
-const menu = (
-  <ul className={styles.navbar}>
-    <li className={styles.menuItem}>
-      <a href="#" className={styles.link}>
-        ADD
-      </a>
-    </li>
-    <li className={styles.menuItem}>
-      <Button type="button">MASS DELETE</Button>
-    </li>
-  </ul>
-);
+interface Props {
+  title: string;
+  menuItems: React.ReactNode;
+}
 
-const Header = () => {
+const Header = (props: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isMobileScreen } = useScreen();
 
@@ -32,13 +23,15 @@ const Header = () => {
     }
   }, [isMobileScreen]);
 
+  const menu = <ul className={styles.navbar}>{props.menuItems}</ul>;
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
   return (
     <header className={styles.header}>
-      <h2 className={styles.title}>Product List</h2>
+      <h2 className={styles.title}>{props.title}</h2>
       <nav>
         {!isMenuOpen && isMobileScreen && (
           <MdMenu
