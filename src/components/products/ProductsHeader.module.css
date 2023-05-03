@@ -9,10 +9,6 @@
 }
 
 @media (min-width: 800px) {
-  .navbar {
-    display: inline-block;
-  }
-
   .menuItem {
     display: inline-block;
     margin-right: 0;
