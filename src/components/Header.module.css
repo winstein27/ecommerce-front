@@ -48,3 +48,14 @@
   right: 0;
   margin: 1rem;
 }
+
+@media (min-width: 800px) {
+  .navbar {
+    display: inline-block;
+  }
+
+  .menuItem {
+    display: inline-block;
+    margin-right: 0;
+  }
+}

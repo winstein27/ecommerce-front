@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { MdMenu, MdClose } from 'react-icons/md';
+
+import useScreen from '../hooks/useScreen';
 
 import Button from './UI/Button';
 import Backdrop from './UI/Backdrop';
@@ -22,23 +24,34 @@ const menu = (
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMobileScreen } = useScreen();
+
+  useEffect(() => {
+    if (!isMobileScreen) {
+      setIsMenuOpen(false);
+    }
+  }, [isMobileScreen]);
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={styles.header}>
       <h2 className={styles.title}>Product List</h2>
       <nav>
-        {!isMenuOpen && (
+        {!isMenuOpen && isMobileScreen && (
           <MdMenu size="2rem" onClick={() => setIsMenuOpen(true)} />
         )}
         {isMenuOpen && (
           <>
-            <Backdrop onClick={() => setIsMenuOpen(false)} />
+            <Backdrop onClick={closeMenu} />
             {createPortal(
               <div className={styles.mobileMenu}>
                 <MdClose
                   size="2rem"
                   className={styles.closeButton}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={closeMenu}
                 />
                 {menu}
               </div>,
@@ -46,6 +59,7 @@ const Header = () => {
             )}
           </>
         )}
+        {!isMobileScreen && menu}
       </nav>
     </header>
   );
