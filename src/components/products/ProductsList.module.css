@@ -1,0 +1,6 @@
+.productsList {
+  list-style-type: none;
+  padding: 0;
+  width: fit-content;
+  margin: auto;
+}
