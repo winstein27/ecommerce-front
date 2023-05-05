@@ -1,21 +1,21 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
-import Root from './pages/Root';
-import Products from './pages/Products';
-import NewProduct from './pages/NewProduct';
+import Root from "./pages/Root";
+import Products from "./pages/Products";
+import AddProduct from "./pages/AddProduct";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Products />,
       },
       {
-        path: '/newProduct',
-        element: <NewProduct />,
+        path: "/addproduct",
+        element: <AddProduct />,
       },
     ],
   },
