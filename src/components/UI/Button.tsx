@@ -7,6 +7,7 @@ interface Props {
   type?: "button" | "submit" | "reset";
   variant?: "default" | "outlined" | "success" | "error";
   id?: string;
+  form?: string;
 }
 
 const Button = (props: Props) => {
@@ -19,6 +20,7 @@ const Button = (props: Props) => {
       className={buttonClasses}
       type={props?.type || "button"}
       id={props.id}
+      form={props.form}
     >
       {props.children}
     </button>

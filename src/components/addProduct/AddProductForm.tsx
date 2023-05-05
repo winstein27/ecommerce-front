@@ -1,3 +1,5 @@
+import { useForm } from "react-hook-form";
+
 import styles from "./AddProductForm.module.css";
 
 import useInput from "../../hooks/useInput";
@@ -84,6 +86,8 @@ const AddProductForm = () => {
       weight.trim().length <= 0 || Number.parseFloat(weight.trim()) <= 0
   );
 
+  const { handleSubmit } = useForm();
+
   const formIsValid =
     !skuHasError &&
     !nameHasError &&
@@ -107,7 +111,7 @@ const AddProductForm = () => {
       action="POST"
       id="#product_form"
       className={styles.form}
-      onSubmit={onSubmitHandler}
+      onSubmit={handleSubmit(onSubmitHandler)}
     >
       <label htmlFor="sku">SKU</label>
       <input
