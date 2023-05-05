@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { MdMenu, MdClose } from 'react-icons/md';
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import { MdMenu, MdClose } from "react-icons/md";
 
-import useScreen from '../../hooks/useScreen';
+import useScreen from "../../hooks/useScreen";
 
-import Backdrop from './Backdrop';
+import Backdrop from "./Backdrop";
 
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
 
 interface Props {
   title: string;
-  menuItems: React.ReactNode;
+  menuItems: JSX.Element[];
 }
 
 const Header = (props: Props) => {
@@ -23,7 +23,13 @@ const Header = (props: Props) => {
     }
   }, [isMobileScreen]);
 
-  const menu = <ul className={styles.navbar}>{props.menuItems}</ul>;
+  const menu = (
+    <ul className={styles.navbar}>
+      {props.menuItems.map((menuItem) => (
+        <li className={styles.menuItem}>{menuItem}</li>
+      ))}
+    </ul>
+  );
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -52,7 +58,7 @@ const Header = (props: Props) => {
                 />
                 {menu}
               </div>,
-              document.getElementById('overlay') as HTMLElement
+              document.getElementById("overlay") as HTMLElement
             )}
           </>
         )}

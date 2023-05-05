@@ -1,18 +1,10 @@
-import Header from '../UI/Header';
-import Button from '../UI/Button';
+import Header from "../UI/Header";
+import Button from "../UI/Button";
 
-import styles from './NewProductHeader.module.css';
-
-const menu = (
-  <>
-    <li className={styles.menuItem}>
-      <Button>Save</Button>
-    </li>
-    <li className={styles.menuItem}>
-      <Button type="button">Cancel</Button>
-    </li>
-  </>
-);
+const menu = [
+  <Button variant="success">Save</Button>,
+  <Button variant="error">Cancel</Button>,
+];
 
 const NewProductHeader = () => {
   return <Header title="Product Add" menuItems={menu} />;
