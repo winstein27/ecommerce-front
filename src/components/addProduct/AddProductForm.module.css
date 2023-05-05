@@ -1,0 +1,50 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form {
+  text-align: center;
+}
+
+.form label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.form input:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.form input,
+.form select {
+  display: block;
+  width: 70%;
+  margin: auto;
+  padding: 0.5rem 1rem;
+}
+
+.form select {
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .form label {
+    display: inline-block;
+    width: 8rem;
+    margin-left: 3rem;
+  }
+
+  .form input,
+  .form select {
+    display: inline-block;
+    max-width: 25rem;
+    margin: 0.6rem 0;
+    margin-right: calc(100% - 37rem);
+  }
+}

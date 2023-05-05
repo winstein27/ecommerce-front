@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styles from "./AddProductForm.module.css";
+
 import useInput from "../../hooks/useInput";
 
 const AddProductForm = () => {
@@ -15,7 +17,7 @@ const AddProductForm = () => {
   const [type, setType] = useState("");
 
   return (
-    <form action="POST" id="#product_form">
+    <form action="POST" id="#product_form" className={styles.form}>
       <label htmlFor="sku">SKU</label>
       <input type="text" name="sku" id="#sku" />
 
