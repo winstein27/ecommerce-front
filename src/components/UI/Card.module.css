@@ -11,6 +11,7 @@
 
 .card p {
   margin: 0;
+  text-align: center;
 }
 
 @media (min-width: 800px) {
