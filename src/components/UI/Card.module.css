@@ -1,6 +1,7 @@
 .card {
   border: 2px solid black;
   width: 70vw;
+  max-width: 18rem;
   padding: 3rem;
   margin-bottom: 2rem;
   display: flex;
@@ -10,4 +11,12 @@
 
 .card p {
   margin: 0;
+}
+
+@media (min-width: 800px) {
+  .card {
+    width: 18rem;
+    height: 14rem;
+    justify-content: center;
+  }
 }

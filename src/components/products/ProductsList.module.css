@@ -4,3 +4,16 @@
   width: fit-content;
   margin: auto;
 }
+
+@media (min-width: 800px) {
+  .productsList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .productsList li {
+    margin: 0 1rem;
+  }
+}
