@@ -11,7 +11,7 @@ const menu = (
       </a>
     </li>
     <li className={styles.menuItem}>
-      <Button type="button">MASS DELETE</Button>
+      <Button type="button" variant='error'>MASS DELETE</Button>
     </li>
   </>
 );

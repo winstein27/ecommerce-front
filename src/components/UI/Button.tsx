@@ -5,11 +5,16 @@ import styles from './Button.module.css';
 interface Props {
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';
+  variant?: 'default' | 'outlined' | 'success' | 'error';
 }
 
 const Button = (props: Props) => {
+  let  buttonClasses = styles.button;
+
+  buttonClasses += props?.variant ? ` ${styles[props.variant]}` : '';
+  
   return (
-    <button className={styles.button} type={props?.type || 'button'}>
+    <button className={buttonClasses} type={props?.type || 'button'}>
       {props.children}
     </button>
   );

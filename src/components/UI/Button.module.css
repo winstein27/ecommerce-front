@@ -4,6 +4,19 @@
   border-radius: 6px;
   box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  background: #e74848;
+  background: #48a7e7;
   color: white;
+}
+
+.outlined {
+  background: white;
+  color: black;
+}
+
+.success {
+  background: #449b1b;
+}
+
+.error {
+  background: #e74848;
 }
