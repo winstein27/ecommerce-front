@@ -1,9 +1,9 @@
-import ProductsHeader from '../components/products/ProductsHeader';
-import ProductsList from '../components/products/ProductsList';
+import ProductsHeader from "../components/products/ProductsHeader";
+import ProductsList from "../components/products/ProductsList";
 
-import products from '../types/DummyProducts';
+import products from "../types/DummyProducts";
 
-import styles from './Products.module.css';
+import styles from "./Main.module.css";
 
 const Products = () => {
   return (

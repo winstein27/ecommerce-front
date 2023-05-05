@@ -3,8 +3,8 @@ import MenuLink from "../UI/MenuLink";
 import Header from "../UI/Header";
 
 const menu = [
-  <MenuLink to="addproduct">ADD</MenuLink>,
-  <Button type="button" variant="error" id="delete-product-btn">
+  <MenuLink to="add-product">ADD</MenuLink>,
+  <Button type="button" variant="error" id="#delete-product-btn">
     MASS DELETE
   </Button>,
 ];
