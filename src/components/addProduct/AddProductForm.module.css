@@ -33,6 +33,17 @@ input[type="number"] {
   text-align: center;
 }
 
+.invalid {
+  border: 1px solid red;
+  background-color: rgb(255, 169, 169);
+  outline: none;
+}
+
+.invalid:active,
+.invalid:focus {
+  border: 2px solid red;
+}
+
 @media (min-width: 800px) {
   .form label {
     display: inline-block;

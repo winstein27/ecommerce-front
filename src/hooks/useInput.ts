@@ -6,16 +6,14 @@ const useInput = (validation: (value: string) => boolean) => {
 
   const valueHasError = validation(enteredValue);
 
-  const valueChangedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const valueChangedHandler = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setEnteredValue(event.target.value);
   };
 
   const valueBlurHandler = () => {
     setValueTouched(true);
-  };
-
-  const updateValue = (value: string) => {
-    setEnteredValue(value);
   };
 
   return {
@@ -24,7 +22,6 @@ const useInput = (validation: (value: string) => boolean) => {
     valueHasError,
     valueChangedHandler,
     valueBlurHandler,
-    updateValue,
   };
 };
 

@@ -1,38 +1,155 @@
-import { useState } from "react";
-
 import styles from "./AddProductForm.module.css";
 
 import useInput from "../../hooks/useInput";
 
 const AddProductForm = () => {
-  const sku = useInput((sku) => sku.trim().length > 0);
-  const name = useInput((name) => name.trim().length > 0);
-  const price = useInput((price) => Number.parseFloat(price.trim()) > 0);
-  const size = useInput((size) => Number.parseFloat(size.trim()) > 0);
-  const height = useInput((height) => Number.parseFloat(height.trim()) > 0);
-  const width = useInput((width) => Number.parseFloat(width.trim()) > 0);
-  const length = useInput((length) => Number.parseFloat(length.trim()) > 0);
-  const weight = useInput((weight) => Number.parseFloat(weight.trim()) > 0);
+  const {
+    value: sku,
+    valueTouched: skuTouched,
+    valueHasError: skuHasError,
+    valueChangedHandler: skuChangedHandler,
+    valueBlurHandler: skuBlurHandler,
+  } = useInput((sku) => sku.trim().length < 1);
+  const {
+    value: name,
+    valueTouched: nameTouched,
+    valueHasError: nameHasError,
+    valueChangedHandler: nameChangedHandler,
+    valueBlurHandler: nameBlurHandler,
+  } = useInput((name) => name.trim().length < 1);
+  const {
+    value: price,
+    valueTouched: priceTouched,
+    valueHasError: priceHasError,
+    valueChangedHandler: priceChangedHandler,
+    valueBlurHandler: priceBlurHandler,
+  } = useInput(
+    (price) => price.trim().length <= 0 || Number.parseFloat(price.trim()) <= 0
+  );
+  const {
+    value: type,
+    valueTouched: typeTouched,
+    valueHasError: typeHasError,
+    valueChangedHandler: typeChangedHandler,
+    valueBlurHandler: typeBlurHandler,
+  } = useInput(
+    (type) => type !== "dvd" && type !== "book" && type !== "forniture"
+  );
+  const {
+    value: size,
+    valueTouched: sizeTouched,
+    valueHasError: sizeHasError,
+    valueChangedHandler: sizeChangedHandler,
+    valueBlurHandler: sizeBlurHandler,
+  } = useInput(
+    (size) => size.trim().length <= 0 || Number.parseFloat(size.trim()) <= 0
+  );
+  const {
+    value: height,
+    valueTouched: heightTouched,
+    valueHasError: heightHasError,
+    valueChangedHandler: heightChangedHandler,
+    valueBlurHandler: heightBlurHandler,
+  } = useInput(
+    (height) =>
+      height.trim().length <= 0 || Number.parseFloat(height.trim()) <= 0
+  );
+  const {
+    value: width,
+    valueTouched: widthTouched,
+    valueHasError: widthHasError,
+    valueChangedHandler: widthChangedHandler,
+    valueBlurHandler: widthBlurHandler,
+  } = useInput(
+    (width) => width.trim().length <= 0 || Number.parseFloat(width.trim()) <= 0
+  );
+  const {
+    value: length,
+    valueTouched: lengthTouched,
+    valueHasError: lengthHasError,
+    valueChangedHandler: lengthChangedHandler,
+    valueBlurHandler: lengthBlurHandler,
+  } = useInput(
+    (length) =>
+      length.trim().length <= 0 || Number.parseFloat(length.trim()) <= 0
+  );
+  const {
+    value: weight,
+    valueTouched: weightTouched,
+    valueHasError: weightHasError,
+    valueChangedHandler: weightChangedHandler,
+    valueBlurHandler: weightBlurHandler,
+  } = useInput(
+    (weight) =>
+      weight.trim().length <= 0 || Number.parseFloat(weight.trim()) <= 0
+  );
 
-  const [type, setType] = useState("");
+  const formIsValid =
+    !skuHasError &&
+    !nameHasError &&
+    !priceHasError &&
+    type !== "" &&
+    ((type === "dvd" && !sizeHasError) ||
+      (type === "book" && !weightHasError) ||
+      (type === "forniture" &&
+        !heightHasError &&
+        !widthHasError &&
+        !lengthHasError));
+
+  const onSubmitHandler = () => {
+    if (formIsValid) {
+      console.log("Valid form!");
+    }
+  };
 
   return (
-    <form action="POST" id="#product_form" className={styles.form}>
+    <form
+      action="POST"
+      id="#product_form"
+      className={styles.form}
+      onSubmit={onSubmitHandler}
+    >
       <label htmlFor="sku">SKU</label>
-      <input type="text" name="sku" id="#sku" />
+      <input
+        type="text"
+        name="sku"
+        id="#sku"
+        value={sku}
+        onChange={skuChangedHandler}
+        onBlur={skuBlurHandler}
+        className={skuTouched && skuHasError ? styles.invalid : ""}
+      />
 
       <label htmlFor="name">Name</label>
-      <input type="text" name="name" id="#name" />
+      <input
+        type="text"
+        name="name"
+        id="#name"
+        value={name}
+        onChange={nameChangedHandler}
+        onBlur={nameBlurHandler}
+        className={nameTouched && nameHasError ? styles.invalid : ""}
+      />
 
       <label htmlFor="price">Price ($)</label>
-      <input type="number" name="price" id="#price" />
+      <input
+        type="number"
+        name="price"
+        id="#price"
+        value={price}
+        onChange={priceChangedHandler}
+        onBlur={priceBlurHandler}
+        className={priceTouched && priceHasError ? styles.invalid : ""}
+      />
 
       <label htmlFor="type">Type Switcher</label>
       <select
         name="type"
         id="#productType"
         value={type}
-        onChange={(event) => setType(event.target.value)}
+        onChange={typeChangedHandler}
+        onBlur={typeBlurHandler}
+        className={typeTouched && typeHasError ? styles.invalid : ""}
       >
         <option value="">Type Switcher</option>
         <option value="dvd" id="#DVD">
@@ -45,26 +162,66 @@ const AddProductForm = () => {
       {type === "dvd" && (
         <>
           <label htmlFor="size">Size (MB)</label>
-          <input type="number" name="size" id="#size" />
+          <input
+            type="number"
+            name="size"
+            id="#size"
+            value={size}
+            onChange={sizeChangedHandler}
+            onBlur={sizeBlurHandler}
+            className={sizeTouched && sizeHasError ? styles.invalid : ""}
+          />
         </>
       )}
       {type === "forniture" && (
         <>
           <label htmlFor="height">Height (CM)</label>
-          <input type="number" name="height" id="#height" />
+          <input
+            type="number"
+            name="height"
+            id="#height"
+            value={height}
+            onChange={heightChangedHandler}
+            onBlur={heightBlurHandler}
+            className={heightTouched && heightHasError ? styles.invalid : ""}
+          />
 
           <label htmlFor="width">Width (CM)</label>
-          <input type="number" name="width" id="#width" />
+          <input
+            type="number"
+            name="width"
+            id="#width"
+            value={width}
+            onChange={widthChangedHandler}
+            onBlur={widthBlurHandler}
+            className={widthTouched && widthHasError ? styles.invalid : ""}
+          />
 
           <label htmlFor="length">Length (CM)</label>
-          <input type="number" name="length" id="#length" />
+          <input
+            type="number"
+            name="length"
+            id="#length"
+            value={length}
+            onChange={lengthChangedHandler}
+            onBlur={lengthBlurHandler}
+            className={lengthTouched && lengthHasError ? styles.invalid : ""}
+          />
         </>
       )}
 
       {type === "book" && (
         <>
           <label htmlFor="weight">Weight (KG)</label>
-          <input type="number" name="weight" id="#weight" />
+          <input
+            type="number"
+            name="weight"
+            id="#weight"
+            value={weight}
+            onChange={weightChangedHandler}
+            onBlur={weightBlurHandler}
+            className={weightTouched && weightHasError ? styles.invalid : ""}
+          />
         </>
       )}
     </form>
