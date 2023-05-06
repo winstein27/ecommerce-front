@@ -1,11 +1,18 @@
 import Header from "../UI/Header";
-import Button from "../UI/Button";
+import ButtonOrLink from "../UI/ButtonOrLink";
 
 const menu = [
-  <Button variant="success" type="submit" form="#product_form">
+  <ButtonOrLink
+    option="button"
+    variant="success"
+    type="submit"
+    form="#product_form"
+  >
     Save
-  </Button>,
-  <Button variant="error">Cancel</Button>,
+  </ButtonOrLink>,
+  <ButtonOrLink option="link" to="/" variant="error">
+    Cancel
+  </ButtonOrLink>,
 ];
 
 const NewProductHeader = () => {

@@ -1,12 +1,18 @@
-import Button from "../UI/Button";
-import MenuLink from "../UI/MenuLink";
 import Header from "../UI/Header";
+import ButtonOrLink from "../UI/ButtonOrLink";
 
 const menu = [
-  <MenuLink to="add-product">ADD</MenuLink>,
-  <Button type="button" variant="error" id="#delete-product-btn">
+  <ButtonOrLink option="link" to="add-product">
+    ADD
+  </ButtonOrLink>,
+  <ButtonOrLink
+    option="button"
+    type="button"
+    variant="error"
+    id="#delete-product-btn"
+  >
     MASS DELETE
-  </Button>,
+  </ButtonOrLink>,
 ];
 
 const ProductsHeader = () => {
