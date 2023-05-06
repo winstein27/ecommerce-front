@@ -25,8 +25,10 @@ const Header = (props: Props) => {
 
   const menu = (
     <ul className={styles.navbar}>
-      {props.menuItems.map((menuItem) => (
-        <li className={styles.menuItem}>{menuItem}</li>
+      {props.menuItems.map((menuItem, index) => (
+        <li key={index} className={styles.menuItem}>
+          {menuItem}
+        </li>
       ))}
     </ul>
   );
