@@ -6,6 +6,7 @@ import styles from "./ProductsList.module.css";
 
 interface Props {
   products: Product[];
+  addOrRemoveFromList: (product: Product) => void;
 }
 
 const ProductsList = (props: Props) => {
@@ -13,7 +14,10 @@ const ProductsList = (props: Props) => {
     <ul className={styles.productsList}>
       {props.products.map((product, index) => (
         <li key={index}>
-          <Card product={product} />
+          <Card
+            product={product}
+            addOrRemoveFromList={props.addOrRemoveFromList}
+          />
         </li>
       ))}
     </ul>

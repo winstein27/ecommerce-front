@@ -5,19 +5,20 @@ import styles from "./ButtonOrLink.module.css";
 interface Props {
   option: "button" | "link";
   children: React.ReactNode;
-  type?: "button" | "submit" | "reset";
+  to?: string;
   variant?: "default" | "outlined" | "success" | "error";
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   id?: string;
   form?: string;
-  to?: string;
 }
 
 const ButtonOrLink = (props: Props) => {
-  const { option, children, to, ...params } = props;
+  const { option, children, to, variant, ...params } = props;
 
   let buttonClasses = styles.button;
 
-  buttonClasses += props?.variant ? ` ${styles[props.variant]}` : "";
+  buttonClasses += variant ? ` ${styles[variant]}` : "";
 
   return option === "link" && to !== undefined ? (
     <Link to={to} {...params} className={buttonClasses}>
