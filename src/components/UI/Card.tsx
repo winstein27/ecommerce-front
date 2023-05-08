@@ -23,7 +23,7 @@ const Card = (props: Props) => {
       />
       <p>{prod.sku}</p>
       <p>{prod.name}</p>
-      <p>{prod.price.toFixed(2)} $</p>
+      <p>{prod.price} $</p>
       <p>
         {prod.type === "book" && `Weight: ${prod.weight}KG`}
         {prod.type === "dvd" && `Size: ${prod.size} MB`}
