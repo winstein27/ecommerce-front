@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ProductsHeader from "../components/products/ProductsHeader";
 import ProductsList from "../components/products/ProductsList";
@@ -11,7 +11,33 @@ import styles from "./Main.module.css";
 
 const Products = () => {
   const [selectedProducts, setSelectedProducts] = useState([] as Product[]);
-  const { data: products, isLoading } = useFetch();
+  const { isLoading, sendRequest: fetchProducts } = useFetch();
+  const [products, setProducts] = useState([] as Product[]);
+
+  useEffect(() => {
+    const loadProducts = (data: any) => {
+      const loadedProducts = [] as Product[];
+
+      data.forEach((product: any) => {
+        loadedProducts.push({
+          id: product.id,
+          sku: product.sku,
+          name: product.name,
+          price: product.price,
+          type: product.type,
+          weight: product.weight,
+          size: product.size,
+          height: product.height,
+          width: product.width,
+          length: product.length,
+        });
+      });
+
+      setProducts(loadedProducts);
+    };
+
+    fetchProducts({ method: "get" }, loadProducts);
+  }, [fetchProducts]);
 
   const addOrRemoveFromList = (product: Product) => {
     setSelectedProducts((products) => {
