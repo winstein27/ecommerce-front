@@ -36,7 +36,7 @@ const Products = () => {
       setProducts(loadedProducts);
     };
 
-    fetchProducts({ method: "get" }, loadProducts);
+    fetchProducts({}, loadProducts);
   }, [fetchProducts]);
 
   const addOrRemoveFromList = (product: Product) => {

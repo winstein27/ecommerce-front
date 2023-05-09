@@ -4,7 +4,13 @@ import styles from "./AddProductForm.module.css";
 
 import useInput from "../../hooks/useInput";
 
-const AddProductForm = () => {
+import Product from "../../types/Product";
+
+interface Props {
+  onProductAdd: (product: Product) => void;
+}
+
+const AddProductForm = ({ onProductAdd }: Props) => {
   const {
     value: sku,
     valueTouched: skuTouched,
@@ -35,7 +41,7 @@ const AddProductForm = () => {
     valueChangedHandler: typeChangedHandler,
     valueBlurHandler: typeBlurHandler,
   } = useInput(
-    (type) => type !== "dvd" && type !== "book" && type !== "forniture"
+    (type) => type !== "dvd" && type !== "book" && type !== "furniture"
   );
   const {
     value: size,
@@ -95,14 +101,34 @@ const AddProductForm = () => {
     type !== "" &&
     ((type === "dvd" && !sizeHasError) ||
       (type === "book" && !weightHasError) ||
-      (type === "forniture" &&
+      (type === "furniture" &&
         !heightHasError &&
         !widthHasError &&
         !lengthHasError));
 
   const onSubmitHandler = () => {
+    skuBlurHandler();
+    nameBlurHandler();
+    priceBlurHandler();
+    typeBlurHandler();
+    sizeBlurHandler();
+    weightBlurHandler();
+    heightBlurHandler();
+    widthBlurHandler();
+    lengthBlurHandler();
+
     if (formIsValid) {
-      console.log("Valid form!");
+      onProductAdd({
+        id: 0,
+        sku,
+        name,
+        price: Number.parseFloat(price),
+        type,
+        size: size ? Number.parseFloat(size) : undefined,
+        weight: weight ? Number.parseFloat(weight) : undefined,
+        height: height ? Number.parseFloat(height) : undefined,
+        length: length ? Number.parseFloat(length) : undefined,
+      });
     }
   };
 
@@ -160,7 +186,7 @@ const AddProductForm = () => {
           DVD
         </option>
         <option value="book">Book</option>
-        <option value="forniture">Forniture</option>
+        <option value="furniture">Furniture</option>
       </select>
 
       {type === "dvd" && (

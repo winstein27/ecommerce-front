@@ -1,34 +1,39 @@
 import { useState, useCallback } from "react";
-import axios from "axios";
 
 interface Config {
-  method: "get" | "post" | "delete";
+  method?: "GET" | "POST" | "PUT" | "DELETE";
+  headers?: { "Content-type": string };
   body?: any;
 }
 
-const client = axios.create({ baseURL: import.meta.env.VITE_API_URL });
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const useFetch = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const sendRequest = useCallback(
-    async (config: Config, loadData: (data: any) => void) => {
+    async (requestConfig: Config, loadData: (data: any) => void) => {
       setIsLoading(true);
-      setError("");
+      setError(null);
+
+      const URL = BASE_URL + "/products";
 
       try {
-        const response = await client[config.method](
-          "/products",
-          {
-            "Content-type": "Application/json",
-          },
-          config.body
-        );
+        const response = await fetch(URL, {
+          method: requestConfig.method ? requestConfig.method : "GET",
+          headers: requestConfig.headers ? requestConfig.headers : {},
+          body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
+        });
 
-        loadData(response.data);
+        if (!response.ok) {
+          throw new Error("Request failed.");
+        }
+
+        const data = await response.json();
+        loadData(data);
       } catch (error: unknown) {
-        setError("Request failed.");
+        console.log(error);
       }
 
       setIsLoading(false);
