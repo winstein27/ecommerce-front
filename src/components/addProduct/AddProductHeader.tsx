@@ -6,7 +6,7 @@ const menu = [
     option="button"
     variant="success"
     type="submit"
-    form="#product_form"
+    form="product_form"
   >
     Save
   </ButtonOrLink>,
