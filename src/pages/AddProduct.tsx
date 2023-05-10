@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import AddProductHeader from "../components/addProduct/AddProductHeader";
 import AddProductForm from "../components/addProduct/AddProductForm";
 
@@ -8,11 +10,14 @@ import useFetch from "../hooks/useFetch";
 import Product from "../types/Product";
 
 const AddProduct = () => {
-  const { isLoading, sendRequest } = useFetch();
+  const navigate = useNavigate();
+  const { sendRequest } = useFetch();
 
   const addProduct = (product: Product) => {
-    sendRequest({ method: "POST", body: product }, () => {
-      console.log("added");
+    sendRequest({ method: "POST", body: product }, (data) => {
+      if (data.id) {
+        navigate("/");
+      }
     });
   };
 

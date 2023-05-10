@@ -127,6 +127,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
         size: size ? Number.parseFloat(size) : undefined,
         weight: weight ? Number.parseFloat(weight) : undefined,
         height: height ? Number.parseFloat(height) : undefined,
+        width: width ? Number.parseFloat(width) : undefined,
         length: length ? Number.parseFloat(length) : undefined,
       });
     }
@@ -203,7 +204,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
           />
         </>
       )}
-      {type === "forniture" && (
+      {type === "furniture" && (
         <>
           <label htmlFor="height">Height (CM)</label>
           <input
