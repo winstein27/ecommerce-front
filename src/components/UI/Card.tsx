@@ -18,7 +18,7 @@ const Card = (props: Props) => {
     <div className={styles.card}>
       <input
         type="checkbox"
-        className={`.delete-checkbox ${styles.checkbox}`}
+        className={`delete-checkbox ${styles.checkbox}`}
         onChange={() => onCheckHandler(prod)}
       />
       <p>{prod.sku}</p>

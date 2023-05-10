@@ -136,7 +136,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
   return (
     <form
       action="POST"
-      id="#product_form"
+      id="product_form"
       className={styles.form}
       onSubmit={handleSubmit(onSubmitHandler)}
     >
