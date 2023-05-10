@@ -11,7 +11,7 @@ import styles from "./Main.module.css";
 
 const Products = () => {
   const [selectedProducts, setSelectedProducts] = useState([] as Product[]);
-  const { isLoading, sendRequest: fetchProducts } = useFetch();
+  const { sendRequest: fetchProducts } = useFetch();
   const [products, setProducts] = useState([] as Product[]);
 
   useEffect(() => {
@@ -48,9 +48,7 @@ const Products = () => {
     });
   };
 
-  return isLoading ? (
-    <h1>Loading</h1>
-  ) : (
+  return (
     <>
       <ProductsHeader selectedProducts={selectedProducts} />
       <main className={styles.main}>
