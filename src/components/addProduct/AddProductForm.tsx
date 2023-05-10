@@ -144,7 +144,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
       <input
         type="text"
         name="sku"
-        id="#sku"
+        id="sku"
         value={sku}
         onChange={skuChangedHandler}
         onBlur={skuBlurHandler}
@@ -155,7 +155,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
       <input
         type="text"
         name="name"
-        id="#name"
+        id="name"
         value={name}
         onChange={nameChangedHandler}
         onBlur={nameBlurHandler}
@@ -166,7 +166,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
       <input
         type="number"
         name="price"
-        id="#price"
+        id="price"
         value={price}
         onChange={priceChangedHandler}
         onBlur={priceBlurHandler}
@@ -176,18 +176,22 @@ const AddProductForm = ({ onProductAdd }: Props) => {
       <label htmlFor="type">Type Switcher</label>
       <select
         name="type"
-        id="#productType"
+        id="productType"
         value={type}
         onChange={typeChangedHandler}
         onBlur={typeBlurHandler}
         className={typeTouched && typeHasError ? styles.invalid : ""}
       >
         <option value="">Type Switcher</option>
-        <option value="dvd" id="#DVD">
+        <option value="dvd" id="DVD">
           DVD
         </option>
-        <option value="book">Book</option>
-        <option value="furniture">Furniture</option>
+        <option value="book" id="Book">
+          Book
+        </option>
+        <option value="furniture" id="Furniture">
+          Furniture
+        </option>
       </select>
 
       {type === "dvd" && (
@@ -196,7 +200,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
           <input
             type="number"
             name="size"
-            id="#size"
+            id="size"
             value={size}
             onChange={sizeChangedHandler}
             onBlur={sizeBlurHandler}
@@ -210,7 +214,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
           <input
             type="number"
             name="height"
-            id="#height"
+            id="height"
             value={height}
             onChange={heightChangedHandler}
             onBlur={heightBlurHandler}
@@ -221,7 +225,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
           <input
             type="number"
             name="width"
-            id="#width"
+            id="width"
             value={width}
             onChange={widthChangedHandler}
             onBlur={widthBlurHandler}
@@ -232,7 +236,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
           <input
             type="number"
             name="length"
-            id="#length"
+            id="length"
             value={length}
             onChange={lengthChangedHandler}
             onBlur={lengthBlurHandler}
@@ -247,7 +251,7 @@ const AddProductForm = ({ onProductAdd }: Props) => {
           <input
             type="number"
             name="weight"
-            id="#weight"
+            id="weight"
             value={weight}
             onChange={weightChangedHandler}
             onBlur={weightBlurHandler}
