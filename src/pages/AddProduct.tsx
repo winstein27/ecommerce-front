@@ -15,7 +15,7 @@ const AddProduct = () => {
 
   const addProduct = (product: Product) => {
     sendRequest({ method: "POST", body: product }, (data) => {
-      if (data.id) {
+      if (data.productId) {
         navigate("/");
       }
     });
