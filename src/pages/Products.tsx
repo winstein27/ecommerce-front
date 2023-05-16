@@ -41,10 +41,9 @@ const Products = () => {
 
   const addOrRemoveFromList = (product: Product) => {
     setSelectedProducts((products) => {
-      products.find((p) => p.id === product.id)
-        ? products.splice(products.indexOf(product), 1)
-        : products.push(product);
-      return products;
+      return products.find((p) => p.id === product.id)
+        ? products.filter(prod => prod.id !== product.id)
+        : [...products, product];
     });
   };
 

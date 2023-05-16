@@ -1,15 +1,35 @@
+import { useNavigate } from "react-router-dom";
+
 import Header from "../UI/Header";
 import ButtonOrLink from "../UI/ButtonOrLink";
 
 import Product from "../../types/Product";
+
+import useFetch from "../../hooks/useFetch";
 
 interface Props {
   selectedProducts: Product[];
 }
 
 const ProductsHeader = (props: Props) => {
+  const { sendRequest } = useFetch();
+  const navigate = useNavigate();
+
   const massDeleteClickHandler = () => {
-    console.log(props.selectedProducts);
+    const idsArray = props.selectedProducts.map((product) => +product.id);
+    console.log(idsArray);
+
+    sendRequest(
+      {
+        method: "DELETE",
+        body: idsArray,
+      },
+      (data) => {
+        if (data.success) {
+          navigate(0);
+        }
+      }
+    );
   };
 
   const menu = [
