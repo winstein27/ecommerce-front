@@ -1,8 +1,7 @@
 import { useState, useCallback } from "react";
 
 interface Config {
-  url?: string;
-  method?: "GET" | "POST";
+  method?: "GET" | "POST" | "DELETE";
   body?: any;
 }
 
@@ -17,8 +16,7 @@ const useFetch = () => {
       setIsLoading(true);
       setError(null);
 
-      const URL =
-        BASE_URL + "/products" + (requestConfig.url ? requestConfig.url : "");
+      const URL = BASE_URL + "/products";
 
       try {
         const response = await fetch(URL, {
