@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 
 interface Config {
-  method?: "GET" | "POST" | "DELETE";
-  headers?: { "Content-type": string };
+  url?: string;
+  method?: "GET" | "POST";
   body?: any;
 }
 
@@ -17,12 +17,13 @@ const useFetch = () => {
       setIsLoading(true);
       setError(null);
 
-      const URL = BASE_URL + "/products";
+      const URL =
+        BASE_URL + "/products" + (requestConfig.url ? requestConfig.url : "");
 
       try {
         const response = await fetch(URL, {
           method: requestConfig.method ? requestConfig.method : "GET",
-          headers: requestConfig.headers ? requestConfig.headers : {},
+          headers: { "Content-type": "application/json" },
           body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
         });
 

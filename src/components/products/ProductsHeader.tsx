@@ -17,12 +17,12 @@ const ProductsHeader = (props: Props) => {
 
   const massDeleteClickHandler = () => {
     const idsArray = props.selectedProducts.map((product) => +product.id);
-    console.log(idsArray);
 
     sendRequest(
       {
-        method: "DELETE",
-        body: idsArray,
+        url: "/massDelete",
+        method: "POST",
+        body: { ids: idsArray },
       },
       (data) => {
         if (data.success) {
