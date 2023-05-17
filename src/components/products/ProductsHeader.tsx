@@ -20,7 +20,8 @@ const ProductsHeader = (props: Props) => {
 
     sendRequest(
       {
-        method: "DELETE",
+        url: "/massDelete",
+        method: "POST",
         body: { ids: idsArray },
       },
       (data) => {
