@@ -31,8 +31,6 @@ Users should be able to:
 ![](./screenshoots/03.png)
 ![](./screenshoots/04.png)
 ![](./screenshoots/05.png)
-![](./screenshoots/06.png)
-![](./screenshoots/07.png)
 
 ### Links
 
